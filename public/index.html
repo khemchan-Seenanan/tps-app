@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TechHub POS - Computer &amp; Phone Store</title>
+  <title>Prime Tech POS - Computer &amp; Phone Store</title>
   <style>
     /* ── CSS Variables ────────────────────────────────────────────────── */
     :root {
@@ -559,7 +559,7 @@
     <div class="brand">
       <div class="brand-icon">💻</div>
       <div class="brand-text">
-        <h1>TechHub POS</h1>
+        <h1>Prime Tech POS</h1>
         <span>Computer &amp; Phone Store</span>
       </div>
     </div>
@@ -1041,7 +1041,8 @@ async function submitTransaction() {
   // Save to localStorage if offline
   if (result.offline) {
     saveLocalTransaction({ ...payload, transactionId: result.transactionId, date: result.date, time: result.time });
-    showToast('Transaction saved locally (offline mode)', 'warning');
+    const reason = result.error ? ` — ${result.error}` : '';
+    showToast(`Transaction saved locally (offline mode)${reason}`, 'warning');
   } else {
     showToast('Transaction submitted successfully!', 'success');
   }
@@ -1086,7 +1087,7 @@ function showReceipt({ transactionId, date, time, cashier, paymentMethod, notes,
   const shortId = transactionId.slice(0, 8).toUpperCase();
 
   body.innerHTML = `
-    <div class="receipt-store-name">TechHub</div>
+    <div class="receipt-store-name">Prime Tech</div>
     <div class="receipt-subtitle">Computer &amp; Phone Store</div>
     <div class="receipt-meta">
       <span><b>Transaction ID:</b><span>${shortId}…</span></span>
